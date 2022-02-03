@@ -41,7 +41,7 @@ class Plugin extends PluginBase
 
         if (!$isRunningInConsole && !$isTesting && !$isAuthenticated && $isBasicAuthEnabled) {
             if (Request::getUser() === $username && Request::getPassword() === $password) {
-                Session::set(self::SESSION_KEY, Request::getUser());
+                Session::put(self::SESSION_KEY, Request::getUser());
             } else {
                 header('WWW-Authenticate: Basic');
                 header('HTTP/1.0 401 Unauthorized');
